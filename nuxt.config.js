@@ -1,3 +1,5 @@
+import path from 'path';
+
 export default {
   mode: 'universal',
   /*
@@ -14,16 +16,18 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    ],
   },
   /*
    ** Customize the progress-bar color
    */
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
-  css: [],
+  // Global stylesheets
+  css: [
+    '~/assets/styles/global.scss',
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -48,14 +52,18 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseUrl: 'http://127.0.0.1:8000/',
+    browserBaseURL: 'http://127.0.0.1:8000/'
+  },
   /*
    ** Build configuration
    */
+  // Build
   build: {
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {}
-  }
+    extractCSS: true,
+    extend (config) {
+      config.resolve.alias['~vars'] = path.resolve(__dirname, 'assets/styles/base/vars.scss');
+    },
+  },
 }
