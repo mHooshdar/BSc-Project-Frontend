@@ -15,7 +15,7 @@ html {
 }
 
 .body {
-  height: 100vh;
+  min-height: 100vh;
   background: rgba($green-bg, 0.3);
 }
 
