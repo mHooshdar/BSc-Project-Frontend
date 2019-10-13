@@ -100,6 +100,8 @@
 </template>
 
 <script>
+import Modal from '~/components/modal';
+137575
 
 export default {
   components: {
